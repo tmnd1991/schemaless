@@ -1,6 +1,35 @@
 # schemaless
 The core foundation for writing type safe, strongly structured data transformations taking advantage of the state of the art tools regardless of the execution enviroment.
 
+## Introduction
+_schemaless_ is a library that aims to provide "schemas" to scala/java classes at compile time. Either manually or with macros.
+Schemas are the foundation of multiple "tasks":
+* Persistence
+* Communication
+* Optimization
+
+### But what would be a schema without a use for it?
+_schemaless_ will also introduce the concept of `StructuredCollection`s that essentially are immutable bags of structured records. `StructuredCollection`s will expose both a sql-like API and a higher-order functional API (as Scala collections).
+
+## Supported Types
+
+| Scala type | Primitive | Composite |
+| -----------|-----------|-----------|
+| Int | V | X |
+| Long | V | X |
+| Float | V | X |
+| Double | V | X |
+| Char | V | X |
+| String | V | X |
+| Byte | V | X |
+| LocalDateTime | V | X |
+| LocalDate | V | X |
+| BigDecimal | V | X |
+| BigInt | V | X |
+| ZonedDateTime | X | V |
+| Seq[T] | X | V |
+| Map[Primitive, T] | X | V |
+
 ## History
 In 2010 I was at my last year of Computer Science Technical School and I thought SQL was bad. I was a "master" Pascal and C programmer in my class and I thought that a language that did not tell how to do stuff but rather what obtain was stupid.
 ### Only stupid people don't change their minds
