@@ -1,5 +1,7 @@
 package it
 
+import java.util.UUID
+
 package object schemaless {
 
   implicit object StringSchema extends Primitive[String]("String", "UTF-8 String")
@@ -18,4 +20,11 @@ package object schemaless {
     val innerSchema = Schema[A]
     new Primitive[Option[A]](s"Option[${innerSchema.name}]", s"Optional of ${innerSchema.description}")
   }
+
+  implicit object UUIDSchema
+      extends Composite[UUID](
+        "UUID",
+        "128 bit Universally Unique IDentifier",
+        Column[Long]("least", LongSchema) :: Column[Long]("most", LongSchema) :: Nil)
+
 }

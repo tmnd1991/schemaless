@@ -9,6 +9,7 @@ lazy val root = (project in file(".")).
     )),
     name := "schemaless",
     libraryDependencies += scalaTest % Test,
+    libraryDependencies += shapeless,
     scalacOptions ++= "-deprecation" :: "-feature" :: "-unchecked" :: "-Xfatal-warnings" :: "-Ywarn-dead-code" ::
       "-Ywarn-inaccessible" :: "-Ywarn-infer-any" :: "-Xlint" :: "-Ywarn-unused-import" :: Nil
   )
