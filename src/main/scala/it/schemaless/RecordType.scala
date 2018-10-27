@@ -1,8 +1,8 @@
 package it.schemaless
+import it.schemaless.record.RecordField
 
-class RecordType private (private val fields: Array[RecordField]) extends SchemalessType {
-  override val name: String = s"Record[${fields.map(_.name).mkString(", ")}]"
-  override val description: String = "I'm Lazy, not gonna do it now"
+class RecordType private (val fields: Seq[RecordField])
+    extends SchemalessType(s"Record[${fields.map(_.name).mkString(", ")}]", "I'm Lazy, not gonna do it now") {
 
   override def equals(obj: Any): Boolean = {
     obj match {
@@ -16,5 +16,5 @@ class RecordType private (private val fields: Array[RecordField]) extends Schema
 }
 
 object RecordType {
-  def apply(fields: Seq[RecordField]): RecordType = new RecordType(fields.toArray)
+  def apply(fields: Seq[RecordField]): RecordType = new RecordType(fields)
 }

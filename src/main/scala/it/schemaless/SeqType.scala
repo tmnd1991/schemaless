@@ -1,6 +1,10 @@
 package it.schemaless
 
-class SeqType private (private val innerType: SchemalessType) extends SchemalessType {
+class SeqType private (private val innerType: SchemalessType)
+    extends SchemalessType(
+      s"Seq[${innerType.name}]",
+      s"Sequence of ${innerType.name}"
+    ) {
 
   override def equals(obj: Any): Boolean = {
     obj match {
@@ -10,9 +14,6 @@ class SeqType private (private val innerType: SchemalessType) extends Schemaless
   }
 
   override def hashCode(): Int = innerType.hashCode()
-
-  override val name: String = s"Seq[${innerType.name}]"
-  override val description: String = s"Sequence of ${innerType.name}"
 }
 
 object SeqType {
